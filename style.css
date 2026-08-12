@@ -1,0 +1,289 @@
+:root {
+    --bg-dark: #0f172a;
+    --text-light: #f8fafc;
+    --accent-blue: #3b82f6;
+    --accent-purple: #8b5cf6;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --card-border: rgba(255, 255, 255, 0.1);
+    
+    /* Categorías de color */
+    --color-tecnologico: #38bdf8; /* Azul claro */
+    --color-economico: #fbbf24; /* Amarillo/Dorado */
+    --color-legales: #f87171; /* Rojo suave */
+    --color-ecologico: #4ade80; /* Verde */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fondos dinámicos */
+.background-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    animation: float 10s infinite ease-in-out alternate;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--accent-blue);
+    top: -100px;
+    left: -100px;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--accent-purple);
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+header {
+    text-align: center;
+}
+
+.badge {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #c4b5fd;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.highlight {
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.instruction {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 300;
+}
+
+/* Grid de Tarjetas */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    perspective: 1000px;
+}
+
+/* Tarjeta 3D */
+.card-scene {
+    width: 100%;
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.card-scene:hover .card-face.front {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Front Face */
+.card-face.front {
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Back Face */
+.card-face.back {
+    transform: rotateY(180deg);
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 30px 20px;
+}
+
+.back h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.card-list {
+    list-style: none;
+    width: 100%;
+}
+
+.card-list li {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding-left: 24px;
+    position: relative;
+    color: #cbd5e1;
+}
+
+.card-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+/* Colores específicos por categoría */
+.card-scene[data-category="tecnologico"] .card-title,
+.card-scene[data-category="tecnologico"] .back h3 { color: var(--color-tecnologico); }
+.card-scene[data-category="tecnologico"] .card-list li::before { color: var(--color-tecnologico); }
+
+.card-scene[data-category="economico"] .card-title,
+.card-scene[data-category="economico"] .back h3 { color: var(--color-economico); }
+.card-scene[data-category="economico"] .card-list li::before { color: var(--color-economico); }
+
+.card-scene[data-category="legales"] .card-title,
+.card-scene[data-category="legales"] .back h3 { color: var(--color-legales); }
+.card-scene[data-category="legales"] .card-list li::before { color: var(--color-legales); }
+
+.card-scene[data-category="ecologico"] .card-title,
+.card-scene[data-category="ecologico"] .back h3 { color: var(--color-ecologico); }
+.card-scene[data-category="ecologico"] .card-list li::before { color: var(--color-ecologico); }
+
+/* Progress bar */
+.progress-container {
+    margin-top: 20px;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+}
+
+.progress-container p {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    transition: width 0.5s ease-out;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    .card-scene { height: 320px; }
+}

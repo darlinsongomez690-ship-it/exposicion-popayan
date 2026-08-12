@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Transporte Público - Popayán 2026</title>
+    <meta name="description" content="Tarjetas de estudio para la exposición sobre el transporte público en Popayán.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <span class="badge">Preparación de Exposición</span>
+            <h1>Transporte Público en Popayán <span class="highlight">2026</span></h1>
+            <p class="subtitle">Nivel de satisfacción de los usuarios (Tu parte de la exposición)</p>
+            <p class="instruction">Haz clic en cada tarjeta para girarla y memorizar los puntos clave.</p>
+        </header>
+
+        <section class="cards-grid" id="cards-container">
+            <!-- Las tarjetas se generan dinámicamente con JS -->
+        </section>
+
+        <div class="progress-container">
+            <p>Progreso de estudio: <span id="progress-text">0/4</span> tarjetas revisadas</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
